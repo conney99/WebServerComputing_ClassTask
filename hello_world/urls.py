@@ -19,11 +19,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import HttpResponse
 
 from hello_world.core import views as core_views
 
+def index(request):
+    return HttpResponse("안녕하세요 pybo에 오신것을 환영합니다.")
+
 urlpatterns = [
-    path("", core_views.index),
+    path("", index),
     path("admin/", admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
